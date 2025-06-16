@@ -1,0 +1,668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Republic Day Celebration - Brainiacs Public School Silwani</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700;900&family=Patriot&display=swap');
+        
+        :root {
+            --saffron: #FF9933;
+            --white: #FFFFFF;
+            --green: #138808;
+            --navy: #000080;
+            --light-blue: #E6F7FF;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--light-blue);
+            color: #333;
+            overflow-x: hidden;
+        }
+        
+        /* Loading Animation */
+        .loader-wrapper {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease;
+        }
+        
+        .loader {
+            width: 80px;
+            height: 80px;
+            border: 8px solid rgba(0, 0, 128, 0.2);
+            border-top: 8px solid var(--navy);
+            border-radius: 50%;
+            animation: spin 1.5s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        .loader-text {
+            font-size: 1.2rem;
+            color: var(--navy);
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+        
+        .republic-day-header {
+            background: linear-gradient(135deg, var(--navy), var(--saffron));
+            color: white;
+            text-align: center;
+            padding: 4rem 2rem;
+            position: relative;
+            overflow: hidden;
+            clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+        }
+        
+        .republic-day-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .republic-day-header h1 {
+            font-family: 'Patriot', sans-serif;
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            text-shadow: 3px 3px 6px rgba(0,0,0,0.3);
+            animation: fadeInDown 1s ease;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .republic-day-header h1::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: var(--white);
+            border-radius: 2px;
+        }
+        
+        .republic-day-header p {
+            font-size: 1.3rem;
+            max-width: 800px;
+            margin: 0 auto;
+            animation: fadeIn 1.5s ease;
+            font-weight: 300;
+            line-height: 1.6;
+        }
+        
+        .flag-animation {
+            height: 15px;
+            background: linear-gradient(90deg, var(--saffron) 33%, var(--white) 33% 66%, var(--green) 66%);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .flag-animation::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 300%;
+            height: 100%;
+            background: linear-gradient(90deg, 
+                rgba(255,255,255,0.2) 0%, 
+                rgba(255,255,255,0.8) 50%, 
+                rgba(255,255,255,0.2) 100%);
+            transform: translateX(-100%);
+            animation: flagShine 3s infinite;
+        }
+        
+        .celebration-container {
+            max-width: 1200px;
+            margin: 3rem auto;
+            padding: 0 2rem;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 1s forwards 0.5s;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 3rem 0;
+            color: var(--navy);
+            font-size: 2.5rem;
+            position: relative;
+            font-weight: 700;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 5px;
+            background: linear-gradient(90deg, var(--saffron), var(--green));
+            margin: 1rem auto;
+            border-radius: 3px;
+        }
+        
+        .gallery-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+        
+        .gallery-item {
+            position: relative;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+            transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+            height: 300px;
+            perspective: 1000px;
+            transform-style: preserve-3d;
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-15px) scale(1.03);
+            box-shadow: 0 25px 50px rgba(0,0,0,0.2);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.8s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1) rotate(1deg);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(0,0,0,0.9), transparent);
+            color: white;
+            padding: 2rem 1.5rem 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.4s ease;
+            backdrop-filter: blur(5px);
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .gallery-caption h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.5rem;
+            font-weight: 700;
+        }
+        
+        .gallery-caption p {
+            font-weight: 300;
+            opacity: 0.9;
+        }
+        
+        .quote-section {
+            background: linear-gradient(135deg, rgba(0,0,128,0.9), rgba(255,153,51,0.9)), url('https://images.unsplash.com/photo-1589254065878-42c9da997008?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80');
+            background-size: cover;
+            background-position: center;
+            background-blend-mode: overlay;
+            color: white;
+            text-align: center;
+            padding: 5rem 2rem;
+            margin: 5rem 0;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+        
+        .quote-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: pulse 8s infinite alternate;
+        }
+        
+        .quote-section blockquote {
+            font-size: 2rem;
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            position: relative;
+            line-height: 1.6;
+            font-weight: 300;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.3);
+        }
+        
+        .quote-section blockquote::before,
+        .quote-section blockquote::after {
+            content: '"';
+            font-size: 3rem;
+            color: var(--white);
+            opacity: 0.5;
+            position: absolute;
+        }
+        
+        .quote-section blockquote::before {
+            top: -20px;
+            left: -30px;
+        }
+        
+        .quote-section blockquote::after {
+            bottom: -40px;
+            right: -30px;
+        }
+        
+        .quote-section p {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .patriotic-message {
+            background-color: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin: 5rem 0;
+            position: relative;
+            overflow: hidden;
+            border-left: 5px solid var(--saffron);
+        }
+        
+        .patriotic-message::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            right: 0;
+            width: 100px;
+            height: 100px;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><path fill="%23000080" opacity="0.05" d="M50,0 L100,50 L50,100 L0,50 Z"/></svg>');
+            background-size: contain;
+            transform: translate(30%, -30%);
+        }
+        
+        .patriotic-message h3 {
+            color: var(--navy);
+            margin-bottom: 1.5rem;
+            font-size: 2rem;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+        
+        .patriotic-message h3::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--green);
+        }
+        
+        .patriotic-message p {
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+            font-size: 1.1rem;
+        }
+        
+        .patriotic-message .highlight {
+            background: linear-gradient(120deg, rgba(255,153,51,0.2), rgba(255,153,51,0));
+            padding: 0.2rem 0.5rem;
+            border-radius: 3px;
+        }
+        
+        .footer {
+            background: linear-gradient(135deg, var(--navy), var(--saffron));
+            color: white;
+            text-align: center;
+            padding: 3rem 2rem;
+            margin-top: 5rem;
+            clip-path: polygon(0 15%, 100% 0, 100% 100%, 0% 100%);
+            position: relative;
+        }
+        
+        .footer::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" preserveAspectRatio="none"><path fill="rgba(255,255,255,0.05)" d="M0,0 L100,0 L100,100 L0,100 Z" /></svg>');
+            background-size: 50px 50px;
+            opacity: 0.3;
+        }
+        
+        .footer p {
+            margin-bottom: 1rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .footer p:first-child {
+            font-size: 1.2rem;
+            font-weight: 600;
+        }
+        
+        .footer p:last-child {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Patriot', sans-serif;
+        }
+        
+        .back-button {
+            display: inline-block;
+            margin-top: 2rem;
+            padding: 0.8rem 2rem;
+            background: var(--white);
+            color: var(--navy);
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            z-index: 1;
+        }
+        
+        .back-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+            color: var(--navy);
+        }
+        
+        .back-button::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, rgba(255,255,255,0.8), rgba(255,255,255,0.5));
+            z-index: -1;
+            transition: all 0.3s ease;
+        }
+        
+        .back-button:hover::before {
+            transform: scaleX(1.1);
+        }
+        
+        /* Animations */
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        @keyframes flagShine {
+            0% { transform: translateX(-100%) skewX(-15deg); }
+            100% { transform: translateX(100%) skewX(-15deg); }
+        }
+        
+        @keyframes pulse {
+            0% { transform: scale(0.8); opacity: 0; }
+            50% { opacity: 0.3; }
+            100% { transform: scale(1.2); opacity: 0; }
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 992px) {
+            .republic-day-header h1 {
+                font-size: 2.8rem;
+            }
+            
+            .quote-section blockquote {
+                font-size: 1.6rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .republic-day-header {
+                padding: 3rem 1.5rem;
+                clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+            }
+            
+            .republic-day-header h1 {
+                font-size: 2.2rem;
+            }
+            
+            .republic-day-header p {
+                font-size: 1.1rem;
+            }
+            
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .gallery-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .quote-section blockquote {
+                font-size: 1.4rem;
+            }
+            
+            .quote-section blockquote::before,
+            .quote-section blockquote::after {
+                font-size: 2rem;
+            }
+            
+            .quote-section blockquote::before {
+                top: -15px;
+                left: -20px;
+            }
+            
+            .quote-section blockquote::after {
+                bottom: -30px;
+                right: -20px;
+            }
+            
+            .patriotic-message {
+                padding: 2rem;
+            }
+            
+            .footer {
+                clip-path: polygon(0 10%, 100% 0, 100% 100%, 0% 100%);
+            }
+        }
+        
+        @media (max-width: 576px) {
+            .republic-day-header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .section-title {
+                font-size: 1.6rem;
+            }
+            
+            .quote-section {
+                padding: 3rem 1.5rem;
+            }
+            
+            .quote-section blockquote {
+                font-size: 1.2rem;
+            }
+            
+            .patriotic-message h3 {
+                font-size: 1.5rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Loading Animation -->
+    <div class="loader-wrapper">
+        <div class="loader"></div>
+        <div class="loader-text">Celebrating Republic Day</div>
+    </div>
+    
+    <div class="republic-day-header">
+        <h1>Republic Day 2024</h1>
+        <p>Brainiacs Public School Silwani proudly celebrates the spirit of democracy and honors the Constitution of India</p>
+    </div>
+    
+    <div class="flag-animation"></div>
+    
+    <div class="celebration-container">
+        <h2 class="section-title">Gallery Highlights</h2>
+        
+        <div class="gallery-container">
+            <div class="gallery-item">
+                <img src="independence_day_celebration/photo_1.jpg" alt="Republic Day Celebration">
+                <div class="gallery-caption">
+                    <h3>Flag Hoisting</h3>
+                    <p>Our principal hoisting the tricolor with pride</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="independence_day_celebration/photo_2.jpg" alt="Republic Day Celebration">
+                <div class="gallery-caption">
+                    <h3>First Price </h3>
+                    <p>Our School Student's Archive First Position</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="independence_day_celebration/photo_3.jpg" alt="Republic Day Celebration">
+                <div class="gallery-caption">
+                    <h3>Student performance</h3>
+                    <p>Students performing patriotic dances</p>
+                </div>
+            </div>
+            
+            <div class="gallery-item">
+                <img src="independence_day_celebration/photo_4.jpg" alt="Republic Day Celebration">
+                <div class="gallery-caption">
+                    <h3>Patriotic Choir</h3>
+                    <p>Melodious renditions of national songs</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="quote-section">
+            <blockquote>We are Indians, firstly and lastly.</blockquote>
+            <p>- B. R. Ambedkar</p>
+        </div>
+        
+        <div class="patriotic-message">
+            <h3>Celebrating Our Constitutional Values</h3>
+            <p>The Republic Day celebration at <span class="highlight">Brainiacs Public School Silwani</span> was a grand affair filled with patriotic fervor. The event began with the hoisting of the national flag, followed by the singing of the national anthem that echoed through the campus.</p>
+            
+            <p>Our students presented a <span class="highlight">spectacular cultural program</span> showcasing India's rich diversity through dances, songs, and skits. The march past by the school houses displayed discipline and unity, reminding us of our armed forces' valor.</p>
+            
+            <p>This year's celebration focused on <span class="highlight">educating students about their constitutional rights and duties</span>. Special assemblies were conducted where teachers explained the significance of the Preamble and fundamental rights.</p>
+            
+            <p>We reaffirm our commitment to nurturing <span class="highlight">responsible citizens</span> who will uphold the values of justice, liberty, equality, and fraternity enshrined in our Constitution.</p>
+        </div>
+    </div>
+    
+    <div class="footer">
+        <p>© 2024 Brainiacs Public School Silwani. All Rights Reserved.</p>
+        <p>JAI HIND</p>
+        <a href="index.html" class="back-button">
+            <i class="fas fa-arrow-left"></i> Back to Home
+        </a>
+    </div>
+    
+    <script>
+        // Loading animation
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                const loader = document.querySelector('.loader-wrapper');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.style.display = 'none', 500);
+                
+                // Animate elements when they come into view
+                const animateOnScroll = function() {
+                    const elements = document.querySelectorAll('.gallery-item, .quote-section, .patriotic-message');
+                    
+                    elements.forEach(element => {
+                        const elementPosition = element.getBoundingClientRect().top;
+                        const screenPosition = window.innerHeight / 1.2;
+                        
+                        if (elementPosition < screenPosition) {
+                            element.style.opacity = '1';
+                            element.style.transform = 'translateY(0)';
+                        }
+                    });
+                };
+                
+                window.addEventListener('scroll', animateOnScroll);
+                animateOnScroll(); // Run once on load
+            }, 1500); // Adjust loading time as needed
+        });
+        
+        // Add animation to gallery items on hover
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('mouseenter', function() {
+                this.querySelector('img').style.transform = 'scale(1.1) rotate(1deg)';
+                this.querySelector('.gallery-caption').style.transform = 'translateY(0)';
+            });
+            
+            item.addEventListener('mouseleave', function() {
+                this.querySelector('img').style.transform = 'scale(1)';
+                this.querySelector('.gallery-caption').style.transform = 'translateY(100%)';
+            });
+        });
+    </script>
+</body>
+</html>

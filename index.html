@@ -1,0 +1,1204 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Braincis School Silwani official website - Education, Events, Faculty, Sports, and More" />
+  <title>Brainiacs Public School Silwani</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- <link rel="stylesheet" href="style.css"> -->
+  <script src="script.js"></script>
+  <style>
+    /* CSS Variables */
+    :root {
+      --primary: #1a4b8e;
+      --primary-dark: #0d3a7a;
+      --secondary: #2563eb;
+      --accent: #ffcc00;
+      --light: #f8f9fa;
+      --dark: #212529;
+      --text: #333;
+      --gray: #6b7280;
+      --border-radius: 0.5rem;
+      --shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    /* Reset and Base Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: #fff;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+
+    a {
+      text-decoration: none;
+      color: var(--secondary);
+      transition: var(--transition);
+    }
+
+    a:hover {
+      color: var(--primary);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 1rem;
+    }
+
+    section {
+      padding: 3rem 0;
+    }
+
+    h1, h2, h3, h4 {
+      color: var(--primary);
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    h2 {
+      font-size: 2rem;
+      text-align: center;
+      position: relative;
+      padding-bottom: 1rem;
+    }
+
+    h2::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 3px;
+      background: var(--accent);
+    }
+
+    p {
+      color: var(--gray);
+      margin-bottom: 1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 0.75rem 1.5rem;
+      background: var(--primary);
+      color: white;
+      border-radius: var(--border-radius);
+      font-weight: 600;
+      transition: var(--transition);
+      border: none;
+      cursor: pointer;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow);
+    }
+
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--primary);
+      color: var(--primary);
+    }
+
+    .btn-outline:hover {
+      background: var(--primary);
+      color: white;
+    }
+
+    /* Header Styles */
+    header {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: var(--shadow);
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    .header-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem;
+    }
+
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .logo-main {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+    }
+
+    .logo-sub {
+      font-size: 0.8rem;
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    /* Navigation */
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 1.5rem;
+    }
+
+    nav ul li a {
+      color: white;
+      font-weight: 500;
+      position: relative;
+    }
+
+    nav ul li a::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background: var(--accent);
+      transition: var(--transition);
+    }
+
+    nav ul li a:hover::after {
+      width: 100%;
+    }
+
+    .menu-toggle {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+
+    /* Hero Carousel */
+    .hero-carousel {
+      position: relative;
+      width: 100%;
+      height: 70vh;
+      max-height: 600px;
+      overflow: hidden;
+    }
+
+    .carousel-inner {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+
+    .carousel-slide {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: opacity 1s ease;
+    }
+
+    .carousel-slide.active {
+      opacity: 1;
+    }
+
+    .carousel-slide img,
+    .carousel-slide video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .carousel-control {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+      z-index: 10;
+      border: none;
+    }
+
+    .carousel-control.prev {
+      left: 20px;
+    }
+
+    .carousel-control.next {
+      right: 20px;
+    }
+
+    .carousel-indicators {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 10px;
+      z-index: 10;
+    }
+
+    .carousel-indicators button {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      border: none;
+      background: rgba(255, 255, 255, 0.5);
+      cursor: pointer;
+      transition: var(--transition);
+    }
+
+    .carousel-indicators button.active {
+      background: white;
+    }
+
+    /* Grid Layouts */
+    .grid-3 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .grid-4 {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .card {
+      background: white;
+      border-radius: var(--border-radius);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card img {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 1.5rem;
+      display: flex;
+      flex-direction: column;
+      height: calc(100% - 200px);
+    }
+
+    .card-content .btn {
+      margin-top: auto;
+      align-self: flex-start;
+    }
+
+    /* Two Column Layout */
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    /* Stats */
+    .stats {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .stat {
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .stat h3 {
+      font-size: 2.5rem;
+      color: var(--secondary);
+      margin-bottom: 0.5rem;
+    }
+
+    /* Faculty */
+    .faculty-card {
+      text-align: center;
+      padding: 1.5rem;
+    }
+
+    .faculty-card img {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 3px solid var(--accent);
+      margin: 0 auto 1rem;
+    }
+
+    /* Floating Action Buttons - Original Style */
+    .fab-container {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      z-index: 999;
+    }
+
+    .fab-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      font-size: 1.2rem;
+    }
+
+    .fab-button i {
+      transition: var(--transition);
+    }
+
+    /* Button Specific Styles */
+    .fab-button.contact {
+      background: linear-gradient(135deg, #4361ee, #3a0ca3);
+    }
+
+    .fab-button.instagram {
+      background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+      background-size: 400% 400%;
+    }
+
+    .fab-button.form {
+      background: linear-gradient(135deg, #4cc9f0, #4895ef);
+    }
+
+    .fab-button.developer {
+      background: linear-gradient(135deg, #7209b7, #560bad);
+    }
+
+    /* Animation for Instagram button */
+    .fab-button.instagram:hover {
+      animation: instagramGradient 3s ease infinite;
+    }
+
+    @keyframes instagramGradient {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Hover Effects */
+    .fab-button:hover {
+      transform: translateY(-3px) scale(1.05);
+      box-shadow: 0 8px 25px rgba(67, 97, 238, 0.3);
+    }
+
+    .fab-button:active {
+      transform: translateY(0) scale(0.98);
+    }
+
+    /* Tooltip Styles */
+    .fab-button::after {
+      content: attr(title);
+      position: absolute;
+      right: calc(100% + 15px);
+      white-space: nowrap;
+      background: var(--dark);
+      color: white;
+      padding: 8px 15px;
+      border-radius: 25px;
+      font-size: 14px;
+      opacity: 0;
+      pointer-events: none;
+      transition: all 0.3s ease;
+      box-shadow: var(--shadow);
+    }
+
+    .fab-button:hover::after {
+      opacity: 1;
+      right: calc(100% + 20px);
+    }
+
+    /* Ripple Effect */
+    .fab-button::before {
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      background: rgba(255, 255, 255, 0.2);
+      border-radius: 50%;
+      transform: scale(0);
+      transition: all 0.3s ease;
+    }
+
+    .fab-button:active::before {
+      transform: scale(1);
+      opacity: 0;
+    }
+
+    /* Contact Form */
+    .contact-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background: white;
+      padding: 2rem;
+      border-radius: var(--border-radius);
+      box-shadow: var(--shadow);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 600;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 0.75rem;
+      border: 1px solid #ddd;
+      border-radius: var(--border-radius);
+      font-family: inherit;
+    }
+
+    .form-group textarea {
+      min-height: 150px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--primary);
+      color: white;
+      padding: 3rem 0 1rem;
+    }
+
+    .footer-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+      margin-bottom: 2rem;
+    }
+
+    .footer-col h3 {
+      color: white;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-bottom: 0.5rem;
+    }
+
+    .footer-col h3::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 50px;
+      height: 2px;
+      background: var(--accent);
+    }
+
+    .footer-links {
+      list-style: none;
+    }
+
+    .footer-links li {
+      margin-bottom: 0.75rem;
+    }
+
+    .footer-links a {
+      color: rgba(255, 255, 255, 0.8);
+    }
+
+    .footer-links a:hover {
+      color: white;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-links a {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      transition: var(--transition);
+    }
+
+    .social-links a:hover {
+      background: var(--accent);
+      transform: translateY(-3px);
+    }
+
+    .copyright {
+      text-align: center;
+      padding-top: 2rem;
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      color: rgba(255, 255, 255, 0.7);
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .two-col {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .menu-toggle {
+        display: block;
+      }
+
+      nav ul {
+        position: fixed;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--primary);
+        flex-direction: column;
+        align-items: center;
+        padding: 1rem 0;
+        clip-path: circle(0px at 90% -10%);
+        transition: all 0.5s ease-out;
+        pointer-events: none;
+      }
+
+      nav ul.open {
+        clip-path: circle(1000px at 90% -10%);
+        pointer-events: all;
+      }
+
+      nav ul li {
+        width: 100%;
+        text-align: center;
+        padding: 0.5rem 0;
+      }
+
+      .hero-carousel {
+        height: 50vh;
+      }
+
+      .grid-3, .grid-4 {
+        grid-template-columns: 1fr;
+      }
+      
+      .card img {
+        height: auto;
+        max-height: 200px;
+      }
+    }
+
+    @media (max-width: 576px) {
+      .stats {
+        grid-template-columns: 1fr;
+      }
+      
+      .fab-button {
+        width: 45px;
+        height: 45px;
+        font-size: 1rem;
+      }
+      
+      .fab-button::after {
+        font-size: 12px;
+        padding: 6px 12px;
+      }
+      
+      h2 {
+        font-size: 1.75rem;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Header -->
+  <header>
+    <div class="container header-container">
+      <div class="logo-container">
+        <div class="logo-main">Brainiacs Public School</div>
+        <div class="logo-sub">Silwani, MP</div>
+      </div>
+      
+      <button class="menu-toggle" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </button>
+      
+      <nav>
+        <ul id="mainMenu">
+          <li><a href="#home">Home</a></li>
+          <li><a href="#about">About</a></li>
+          <li><a href="#academics">Academics</a></li>
+          <li><a href="#faculty">Faculty</a></li>
+          <li><a href="#events">Events</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Carousel -->
+  <section class="hero-carousel" id="home">
+    <div class="carousel-inner">
+      <div class="carousel-slide active">
+        <img src="header_images/buliding_cover.jpg" alt="School building">
+      </div>
+      <div class="carousel-slide">
+        <img src="header_images/photo_pata_nhi_keski_hai.jpg" alt="School ground">
+      </div>
+      <div class="carousel-slide">
+        <img src="header_images/WhatsApp Image 2025-06-09 at 13.12.28_b87842bd.jpg" alt="School ground">
+      </div>
+      <div class="carousel-slide">
+        <img src="header_images/all_student.jpg" alt="Ganjendara sir">
+      </div>
+      <div class="carousel-slide">
+        <img src="header_images/pushi_mam_photo.jpg" alt="Pushi mam">
+      </div>
+      <div class="carousel-slide">
+        <img src="header_images/full_staff.jpg" alt="Full staff">
+      </div>
+      <div class="carousel-slide">
+        <img src="header_images/WhatsApp Image 2025-06-09 at 13.12.28_b87842bd.jpg" alt="School staff">
+      </div>
+      <div class="carousel-slide">
+        <img src="header_images/ganjendara_sir.jpg" alt="School banner">
+      </div>
+    
+    </div>
+    
+    <button class="carousel-control prev" id="prevSlide">
+      <i class="fas fa-chevron-left"></i>
+    </button>
+    <button class="carousel-control next" id="nextSlide">
+      <i class="fas fa-chevron-right"></i>
+    </button>
+    
+    <div class="carousel-indicators" id="carouselIndicators">
+      <!-- Indicators will be added by JavaScript -->
+    </div>
+  </section>
+
+  <!-- Events Section -->
+  <section id="events" class="container">
+    <h2>Weekly Events</h2>
+    <div class="card">
+      <img src="weakly_event/today_event.png" alt="Upcoming Events" style="width: 100%; height: auto; max-height: 500px; object-fit: contain;">
+      <div class="card-content">
+        <h3>Upcoming Events</h3>
+        <p>Stay updated with our weekly school events and activities.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Notices Section -->
+  <section id="notices" class="container">
+    <h2>Notices</h2>
+    <div class="card">
+      <div class="card-content">
+        <h3>Admissions Open</h3>
+        <p>Brainics School Admission 2025-2026 has started. <a href="#contact">Click here for admission</a>.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Celebrations Section -->
+  <section id="celebrations" class="container">
+    <h2>Celebrations & Activities</h2>
+    <div class="grid-3">
+      <div class="card">
+        <img src="tree plantation/photo_1.jpg" alt="Tree Plantation">
+        <div class="card-content">
+          <h3>Tree Plantation</h3>
+          <p>Plant trees today for a greener tomorrow—clean air, shade, and life for all.</p>
+          <a href="treeplantation.html" class="btn btn-outline">View More</a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="celbration/1.jpg" alt="Swachh Bharat Abhiyan">
+        <div class="card-content">
+          <h3>Swachh Bharat Abhiyan</h3>
+          <p>Our students actively participated in the cleanliness drive to promote hygiene.</p>
+          <a href="swachh_bharat_abhiyan.Html" class="btn btn-outline">View More</a>
+        </div>
+      </div>
+      
+      <div class="card">
+        <img src="independence_day_celebration/photo_1.jpg" alt="Republic Day">
+        <div class="card-content">
+          <h3>Republic Day</h3>
+          <p>Respectful observance of national freedom with flag hoisting and cultural performances.</p>
+          <a href="republic_day.html" class="btn btn-outline">View More</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Affiliations Section -->
+  <section id="affiliations" class="container">
+    <h2>Our Affiliations</h2>
+    <div class="grid-3" style="place-items: center;">
+      <img src="board_logo/MPBoardLogo.png" alt="MP Board" style="max-height: 80px;">
+      <img src="board_logo/cbse_logo.png" alt="CBSE" style="max-height: 80px;">
+      <img src="board_logo/icse.png" alt="ICSE" style="max-height: 80px;">
+    </div>
+  </section>
+
+  <!-- Toppers Section -->
+  <section id="toppers" class="container">
+    <h2>Our Toppers</h2>
+    <div class="grid-4">
+      <div class="faculty-card">
+        <img src="toppers photo/photo_1.jpg" alt="Vinshika Sahu">
+        <h4>Vinshika Sahu</h4>
+        <p>Class 10 - 97% in MP Board 2025</p>
+      </div>
+      
+      <div class="faculty-card">
+        <img src="toppers photo/photo_2.jpg" alt="Om Raghuwanshi">
+        <h4>Om Raghuwanshi</h4>
+        <p>Class 10 - 95% in MP Board 2025</p>
+      </div>
+      
+      <div class="faculty-card">
+        <img src="toppers photo/photo_3.jpg" alt="Piyush Sahu">
+        <h4>Piyush Sahu</h4>
+        <p>Class 10 - 93% in MP Board 2025</p>
+      </div>
+      
+      <div class="faculty-card">
+        <img src="toppers photo/photo_4.jpg" alt="Poorvi Raghuwanshi">
+        <h4>Poorvi Raghuwanshi</h4>
+        <p>Class 10 - 93% in MP Board 2025</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats Section -->
+  <section id="stats" class="container">
+    <h2>Our Achievements</h2>
+    <div class="stats">
+      <div class="stat">
+        <h3>2000+</h3>
+        <p>Students Passed Out</p>
+      </div>
+      <div class="stat">
+        <h3>800+</h3>
+        <p>Current Students</p>
+      </div>
+      <div class="stat">
+        <h3>95%+</h3>
+        <p>Pass Percentage</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Faculty Section -->
+  <section id="faculty" class="container">
+    <h2>Our Faculty</h2>
+    <div class="grid-4">
+      <div class="faculty-card">
+        <img src="our_faclty/principle.png" alt="Principal">
+        <h4>Mr. Gajendra Raghuwanshi</h4>
+        <p>Principal</p>
+        <p>M.Sc, B.Ed, 5+ years experience</p>
+      </div>
+      
+      <div class="faculty-card">
+        <img src="our_faclty/puspi_mam-modified.png" alt="Vice Principal">
+        <h4>Mrs. Pushi Raghuwanshi</h4>
+        <p>Vice Principal</p>
+        <p>M.Sc, B.Ed, 5+ years experience</p>
+      </div>
+      
+      <div class="faculty-card">
+        <img src="our_faclty/maths.png" alt="Maths Teacher">
+        <h4>Maths Faculty</h4>
+        <p>B.S.C(Maths),B.Ed ,D.Ed, 5+ years experience</p>
+      </div>
+      
+      <div class="faculty-card">
+        <img src="our_faclty/science .jpg" alt="Science Teacher">
+        <h4>Science Faculty</h4>
+        <p>M.Sc, B.Ed,5+ years experience</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Computer Lab Section -->
+  <section id="computer" class="container">
+    <h2>Computer Lab</h2>
+    <div class="two-col">
+      <div>
+        <img src="our_faclty/computer.png" alt="Computer Lab" style="border-radius: var(--border-radius);">
+      </div>
+      <div>
+        <h3>Computer Lab Faculty </h3>
+        <p>Our computer section features modern labs equipped with the latest computers and software to enable students to explore coding, robotics, and digital technologies.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sports Section -->
+  <section id="sports" class="container">
+    <h2>Sports Facilities</h2>
+    <div class="two-col">
+      <div>
+        <h3>Expert Coaches & Trainers</h3>
+        <p>Our sports faculty consists of experienced coaches focusing on physical fitness, team sports and individual skills development to nurture champions.
+
+        </p>
+      </div>
+      <div>
+        <img src="sport_faclty/sport faclty-modified.png">
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+   <section id="contact" class="container">
+    <h2>Contact Us</h2>
+    <div class="contact-form">
+      <form action="https://api.web3forms.com/submit" method="POST">
+        <input type="hidden" name="access_key" value="1b5f26e0-61ae-4185-ab5d-34a8a74eab97">
+        <input type="hidden" name="subject" value="New Admission Inquiry from Braincis School Website">
+        <input type="hidden" name="redirect" value="https://web3forms.com/success">
+        
+        <div class="form-group">
+          <label for="name">Full Name</label>
+          <input type="text" id="name" name="name" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone</label>
+          <input type="tel" id="phone" name="phone" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="class">Class</label>
+          <select id="class" name="class" required>
+            <option value="">Select Class</option>
+            <option value="6">Class 6</option>
+            <option value="7">Class 7</option>
+            <option value="8">Class 8</option>
+            <option value="9">Class 9</option>
+            <option value="10">Class 10</option>
+            <option value="11">Class 11</option>
+            <option value="12">Class 12</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" required></textarea>
+        </div>
+        
+        <div class="h-captcha" data-captcha="true"></div>
+        
+        <button type="submit" class="btn">Submit</button>
+      </form>
+    </div>
+  </section>
+
+  <!-- Developer Section -->
+  <section class="container">
+    <div style="background: var(--light); padding: 2rem; border-radius: var(--border-radius); text-align: center;">
+      <div style="max-width: 600px; margin: 0 auto;">
+        <h3>About the Developer</h3>
+        <img src="do_not_open_this_folder _devloper _only _highly_risky/real_profile_photo.png-removebg-preview.png" alt="Developer" style="width: 150px; height: 150px; border-radius: 50%; object-fit: cover; margin: 1rem auto; border: 3px solid var(--accent);">
+        <p>This website was developed by Mayank Dhakad, a passionate web developer dedicated to creating beautiful and functional websites.</p>
+        <div style="display: flex; justify-content: center; gap: 1rem; margin-top: 1rem;">
+          <a href="https://www.instagram.com/mayank000_5/" target="_blank" style="color: var(--primary); font-size: 1.5rem;"><i class="fab fa-instagram"></i></a>
+          <a href="https://www.facebook.com/mayank.dhakad.5264" target="_blank" style="color: var(--primary); font-size: 1.5rem;"><i class="fab fa-facebook"></i></a>
+          <a href="https://codewithmayank95.github.io/mayankportfolio/" target="_blank" style="color: var(--primary); font-size: 1.5rem;"><i class="fas fa-globe"></i></a>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h3>Braincis School</h3>
+          <p>Providing quality education since 2010. Our mission is to nurture young minds and prepare them for the future.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Quick Links</h3>
+          <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About Us</a></li>
+            <li><a href="#academics">Academics</a></li>
+            <li><a href="#faculty">Faculty</a></li>
+            <li><a href="#contact">Contact</a></li>
+          </ul>
+        </div>
+        
+        <div class="footer-col">
+          <h3>Contact Info</h3>
+          <div class="contact-info">
+            <p><i class="fas fa-map-marker-alt"></i> Silwani, Raisen, Madhya Pradesh</p>
+            <p><i class="fas fa-phone"></i> +91 9752384910</p>
+            <p><i class="fas fa-envelope"></i> info@braincisschool.com</p>
+          </div>
+        </div>
+      </div>
+      
+      <div class="copyright">
+        <p>&copy; 2023 Braincis School. All Rights Reserved. | Developed by Mayank Dhakad</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating Action Buttons - Original Style -->
+  <div class="fab-container">
+    <a href="tel:+919752384910" class="fab-button contact" title="Call Us">
+      <i class="fas fa-phone-alt"></i>
+    </a>
+    <a href="https://www.instagram.com/brainiacs_public_school_/" target="_blank" class="fab-button instagram" title="Instagram">
+      <i class="fab fa-instagram"></i>
+    </a>
+    <a href="#contact" class="fab-button form" title="Contact Form">
+      <i class="fas fa-envelope"></i>
+    </a>
+    <a href="https://codewithmayank95.github.io/mayankportfolio/" target="_blank" class="fab-button developer" title="Developer">
+      <i class="fas fa-code"></i>
+    </a>
+  </div>
+
+  <script>
+    // Mobile Menu Toggle
+    const menuToggle = document.getElementById('menuToggle');
+    const mainMenu = document.getElementById('mainMenu');
+    
+    menuToggle.addEventListener('click', () => {
+      mainMenu.classList.toggle('open');
+    });
+    
+    // Carousel Functionality
+    const carousel = document.querySelector('.carousel-inner');
+    const slides = document.querySelectorAll('.carousel-slide');
+    const prevBtn = document.getElementById('prevSlide');
+    const nextBtn = document.getElementById('nextSlide');
+    const indicatorsContainer = document.getElementById('carouselIndicators');
+    let currentIndex = 0;
+    let interval;
+    
+    // Create indicators
+    slides.forEach((slide, index) => {
+      const indicator = document.createElement('button');
+      indicator.addEventListener('click', () => goToSlide(index));
+      indicatorsContainer.appendChild(indicator);
+    });
+    
+    const indicators = document.querySelectorAll('.carousel-indicators button');
+    
+    // Start carousel
+    startCarousel();
+    
+    function startCarousel() {
+      interval = setInterval(nextSlide, 5000);
+      updateIndicators();
+    }
+    
+    function nextSlide() {
+      currentIndex = (currentIndex + 1) % slides.length;
+      showSlide(currentIndex);
+    }
+    
+    function prevSlide() {
+      currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+      showSlide(currentIndex);
+    }
+    
+    function goToSlide(index) {
+      currentIndex = index;
+      showSlide(currentIndex);
+    }
+    
+    function showSlide(index) {
+      slides.forEach(slide => slide.classList.remove('active'));
+      slides[index].class ;slides[index].classList.add('active');
+  
+  // Pause all videos and play current one
+  document.querySelectorAll('.carousel-slide video').forEach(video => {
+    video.pause();
+  });
+  
+  const currentVideo = slides[index].querySelector('video');
+  if (currentVideo) {
+    currentVideo.currentTime = 0;
+    currentVideo.play().catch(e => console.log('Autoplay prevented:', e));
+  }
+  
+  updateIndicators();
+  resetInterval();
+}
+
+function updateIndicators() {
+  indicators.forEach((indicator, index) => {
+    indicator.classList.toggle('active', index === currentIndex);
+  });
+}
+
+function resetInterval() {
+  clearInterval(interval);
+  startCarousel();
+}
+
+// Event Listeners
+prevBtn.addEventListener('click', () => {
+  prevSlide();
+});
+
+nextBtn.addEventListener('click', () => {
+  nextSlide();
+});
+
+// Pause on hover
+carousel.addEventListener('mouseenter', () => {
+  clearInterval(interval);
+});
+
+carousel.addEventListener('mouseleave', () => {
+  resetInterval();
+});
+
+// Touch support for mobile
+let touchStartX = 0;
+let touchEndX = 0;
+
+carousel.addEventListener('touchstart', (e) => {
+  touchStartX = e.changedTouches[0].screenX;
+  clearInterval(interval);
+}, {passive: true});
+
+carousel.addEventListener('touchend', (e) => {
+  touchEndX = e.changedTouches[0].screenX;
+  handleSwipe();
+  resetInterval();
+}, {passive: true});
+
+function handleSwipe() {
+  const threshold = 50;
+  if (touchEndX < touchStartX - threshold) {
+    nextSlide();
+  } else if (touchEndX > touchStartX + threshold) {
+    prevSlide();
+  }
+}
+
+// Floating button animations
+const fabButtons = document.querySelectorAll('.fab-button');
+
+fabButtons.forEach(button => {
+  button.addEventListener('mouseenter', () => {
+    button.style.transform = 'translateY(-3px) scale(1.05)';
+    button.style.boxShadow = '0 8px 25px rgba(67, 97, 238, 0.3)';
+  });
+  
+  button.addEventListener('mouseleave', () => {
+    button.style.transform = '';
+    button.style.boxShadow = '';
+  });
+  
+  button.addEventListener('mousedown', () => {
+    button.style.transform = 'translateY(0) scale(0.98)';
+  });
+  
+  button.addEventListener('mouseup', () => {
+    button.style.transform = 'translateY(-3px) scale(1.05)';
+  });
+});
+
+// Form submission
+const schoolForm = document.getElementById('schoolForm');
+
+schoolForm.addEventListener('submit', (e) => {
+  e.preventDefault();
+  
+  // Get form values
+  const formData = new FormData(schoolForm);
+  const data = Object.fromEntries(formData);
+  
+  // Here you would typically send the data to a server
+  console.log('Form submitted:', data);
+  
+  // Show success message
+  alert('Thank you for your submission! We will contact you soon.');
+  
+  // Reset form
+  schoolForm.reset();
+}); </script>
+  <script src="https://web3forms.com/client/script.js" async defer></script>
+  </body>
+</html>
