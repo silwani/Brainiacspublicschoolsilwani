@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>⚠️ Site Blocked by Developer</title>
+    <style>
+        :root {
+            --primary-red: #d32f2f;
+            --dark-red: #b71c1c;
+            --light-bg: #ffebee;
+            --whatsapp-green: #25D366;
+            --call-green: #4CAF50;
+        }
+        
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: var(--light-bg);
+            color: var(--primary-red);
+            text-align: center;
+            padding: 20px;
+            line-height: 1.6;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        
+        .container {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            padding: clamp(20px, 5vw, 40px);
+            width: 100%;
+            max-width: 650px;
+            border-top: 10px solid var(--primary-red);
+            animation: pulse 2s infinite;
+            margin: 20px 0;
+        }
+        
+        @keyframes pulse {
+            0% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0.4); }
+            70% { box-shadow: 0 0 0 15px rgba(211, 47, 47, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(211, 47, 47, 0); }
+        }
+        
+        h1 {
+            color: var(--primary-red);
+            margin: 0 0 15px 0;
+            font-size: clamp(22px, 5vw, 28px);
+        }
+        
+        .urgent-alert {
+            background-color: var(--primary-red);
+            color: white;
+            padding: 12px;
+            border-radius: 5px;
+            margin: 20px 0;
+            font-weight: bold;
+            animation: blink 1s step-end infinite;
+            font-size: clamp(14px, 3vw, 16px);
+        }
+        
+        @keyframes blink {
+            50% { opacity: 0.8; }
+        }
+        
+        .countdown {
+            font-size: clamp(16px, 4vw, 24px);
+            font-weight: bold;
+            margin: 20px 0;
+            color: var(--dark-red);
+            line-height: 1.4;
+        }
+        
+        .countdown span {
+            font-size: clamp(20px, 6vw, 28px);
+            display: inline-block;
+            margin: 0 2px;
+        }
+        
+        p {
+            font-size: clamp(14px, 3.5vw, 18px);
+            margin-bottom: 15px;
+            text-align: center;
+        }
+        
+        .contact-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            flex-wrap: wrap;
+            margin-top: 25px;
+        }
+        
+        .btn {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-weight: bold;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: clamp(14px, 3.5vw, 16px);
+            min-width: 160px;
+            width: 100%;
+            max-width: 220px;
+            touch-action: manipulation;
+        }
+        
+        .call-btn {
+            background-color: var(--call-green);
+            color: white;
+        }
+        
+        .whatsapp-btn {
+            background-color: var(--whatsapp-green);
+            color: white;
+        }
+        
+        .btn:hover, .btn:focus {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .btn:active {
+            transform: translateY(1px);
+        }
+        
+        .btn i {
+            margin-right: 8px;
+            font-size: clamp(16px, 4vw, 18px);
+        }
+        
+        .developer-name {
+            font-weight: bold;
+            color: var(--dark-red);
+            text-decoration: underline;
+        }
+        
+        .warning-icon {
+            font-size: clamp(30px, 8vw, 40px);
+            margin-bottom: 10px;
+            color: var(--primary-red);
+            animation: shake 0.5s infinite;
+        }
+        
+        @keyframes shake {
+            0% { transform: rotate(0deg); }
+            25% { transform: rotate(5deg); }
+            50% { transform: rotate(0deg); }
+            75% { transform: rotate(-5deg); }
+            100% { transform: rotate(0deg); }
+        }
+        
+        /* Extra small devices (phones, 400px and down) */
+        @media only screen and (max-width: 400px) {
+            .btn {
+                min-width: 140px;
+                padding: 10px 15px;
+            }
+            
+            .contact-buttons {
+                gap: 8px;
+            }
+            
+            body {
+                padding: 10px;
+            }
+        }
+        
+        /* Landscape orientation fixes */
+        @media screen and (max-height: 500px) and (orientation: landscape) {
+            .container {
+                margin: 10px 0;
+                padding: 15px;
+            }
+            
+            .countdown {
+                margin: 10px 0;
+            }
+        }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <div class="warning-icon">
+            <i class="fas fa-exclamation-triangle"></i>
+        </div>
+        <h1><i class="fas fa-ban"></i> SITE BLOCKED BY DEVELOPER</h1>
+        
+        <div class="urgent-alert">
+            <i class="fas fa-bell"></i> URGENT: CONTACT DEVELOPER IMMEDIATELY
+        </div>
+        
+        <div class="countdown" id="countdown">
+            SITE WILL BE REMOVED FROM GOOGLE IN: <span>7</span> DAYS
+        </div>
+        
+        <p>This website has been <strong>deactivated</strong> by the developer <span class="developer-name">Mayank Dhakad</span>.</p>
+        <p><strong>Immediate action required:</strong> The site will be permanently removed from Google search results in <strong>7 days</strong> if not reactivated.</p>
+        <p>To prevent permanent removal and reactivate the site, you must contact the developer immediately using one of the methods below:</p>
+        
+        <div class="contact-buttons">
+            <a href="tel:7389070259" class="btn call-btn">
+                <i class="fas fa-phone"></i> CALL NOW (7389070259)
+            </a>
+            <a href="https://wa.me/917389070259" class="btn whatsapp-btn">
+                <i class="fab fa-whatsapp"></i> WHATSAPP (7389070259)
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Countdown timer (7 days from now)
+        document.addEventListener('DOMContentLoaded', function() {
+            const countdownElement = document.getElementById('countdown');
+            const targetDate = new Date();
+            targetDate.setDate(targetDate.getDate() + 7);
+            
+            function updateCountdown() {
+                const now = new Date();
+                const diff = targetDate - now;
+                
+                if (diff <= 0) {
+                    countdownElement.innerHTML = "SITE HAS BEEN PERMANENTLY REMOVED FROM GOOGLE";
+                    return;
+                }
+                
+                const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+                
+                countdownElement.innerHTML = `SITE WILL BE REMOVED FROM GOOGLE IN: 
+                    <span>${days}</span> DAYS 
+                    ${hours}H ${minutes}M ${seconds}S`;
+            }
+            
+            updateCountdown();
+            setInterval(updateCountdown, 1000);
+            
+            // Make buttons more touch-friendly
+            document.querySelectorAll('.btn').forEach(btn => {
+                btn.style.webkitTapHighlightColor = 'transparent';
+                btn.addEventListener('touchstart', function() {
+                    this.classList.add('btn-active');
+                });
+                btn.addEventListener('touchend', function() {
+                    this.classList.remove('btn-active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
